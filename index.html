@@ -55,6 +55,11 @@
 </head>
 <body>
 
+<section id="countdown" style="text-align:center; padding: 20px;">
+  <h2>Countdown to 5k</h2>
+  <div id="timer" style="font-size: 1.5rem; font-weight: bold;"></div>
+</section>
+  
 <header>
     <h1>Free Clinic of Meridian 5k & Fun Run</h1>
     <p>Support the Free Clinic of Meridian! Join us for a fun community 5K!</p>
@@ -66,6 +71,35 @@
     <p><strong>Location:</strong> QV Sykes Park, Meridian, MS</p>
     <p><strong>Times:</strong> 8:00 AM - 5k Start, 9:00 AM - Fun Run Start</p>
 
+<section id="pricing" style="padding: 20px;">
+  <h2>Registration Pricing</h2>
+  <table style="width:100%; border-collapse: collapse;">
+    <tr>
+      <th style="border: 1px solid #ccc; padding: 10px;">Tier</th>
+      <th style="border: 1px solid #ccc; padding: 10px;">Dates</th>
+      <th style="border: 1px solid #ccc; padding: 10px;">Dates</th>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #ccc; padding: 10px;">Early Bird</td>
+      <td style="border: 1px solid #ccc; padding: 10px;">January 1 - Feb 1</td>
+      <td style="border: 1px solid #ccc; padding: 10px;">$20</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #ccc; padding: 10px;">Regular</td>
+      <td style="border: 1px solid #ccc; padding: 10px;">Feb 2 - March 20</td>
+      <td style="border: 1px solid #ccc; padding: 10px;">$25</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #ccc; padding: 10px;">Race Day</td>
+      <td style="border: 1px solid #ccc; padding: 10px;">March 21</td>
+      <td style="border: 1px solid #ccc; padding: 10px;">$30</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #ccc; padding: 10px;">(Cash or check Payments may be made at the Race Day-of)</td>
+    </tr>
+  </table>
+</section>
+  
     <a class="register-btn" href="Signup link" target="_blank">Register Now</a>
 
     <h2>Location Map</h2>
@@ -79,5 +113,28 @@
     <p>&copy; 2026 Free Clinic of Meridian 5k & Fun Run</p>
 </footer>
 
+<script>
+  const raceDate = new Date("March 21, 2026 08:00:00").getTime();
+  
+  const timer = setInterval(function() {
+    const now = new Date().getTime();
+    const timeLeft = raceDate - now;
+
+    if (timeLeft <= 0) {
+      document.getElementById("timer").innerHTML = "Race Time is Here!";
+      clearInterval(timer);
+      return;
+    }
+
+    const days = Math.floor(timeLeft / (1000 * 60 * 60 *24));
+    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeLeft % (1000 * 60 *60)) / (1000 * 60));
+    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+    document.getElementById("timer").innerHTML = 
+      days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+  }, 1000);
+</script>
+  
 </body>
 </html>
